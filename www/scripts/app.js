@@ -1,22 +1,26 @@
 'use strict';
 
 // Declare app level module which depends on filters, and services
-angular.module('todo', [
-  'todo.config',
-  'todo.routes', 
-  'todo.filters', 
-  'todo.services', 
-  'todo.directives', 
-  'todo.controllers',
-  'waitForAuth', 
-  'routeSecurity',
-  'ngResource',
-  'ionic',
-  'firebase'
-  ])
+angular.module('conanWebApp', [
+	'myApp.config', 
+	'myApp.routes', 
+	'myApp.filters', 
+	'myApp.services', 
+	'myApp.directives', 
+	'myApp.controllers',
+	'waitForAuth', 
+	'routeSecurity'
+	'ngCookies',
+  	'ngResource',
+  	'ngSanitize',
+  	'ngRoute',
+  	'ionic',
+  	'firebase'
+])
+
 
    .run(['loginService', '$rootScope', 'FBURL', function(loginService, $rootScope, FBURL) {
-      if( FBURL === 'https://bdurning-fire-5269.firebaseio.com' ) {
+      if( FBURL === 'https://burning-fire-5629.firebaseio.com' ) {
          // double-check that the app has been configured
          angular.element(document.body).html('<h1>Please configure app/js/config.js before running!</h1>');
          setTimeout(function() {
@@ -25,7 +29,7 @@ angular.module('todo', [
       }
       else {
          // establish authentication
-         $rootScope.auth = loginService.init('/login');
+         $rootScope.auth = loginService.init('/');
          $rootScope.FBURL = FBURL;
       }
    }]);
